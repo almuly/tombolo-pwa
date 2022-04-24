@@ -1,7 +1,30 @@
-import '../styles/globals.css'
+import * as React from 'react';
+import Head from 'next/head';
+import {ThemeProvider} from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import {CacheProvider} from '@emotion/react';
+import theme from '../src/theme';
+import createEmotionCache from '../src/createEmotionCache';
+import {ProjectWrapper} from '../lib/context/projectContext'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const clientSideEmotionCache = createEmotionCache();
+
+export default function MyApp(props) {
+    const {Component, emotionCache = clientSideEmotionCache, pageProps} = props;
+
+    return (
+        <CacheProvider value={emotionCache}>
+            <Head>
+                <title>Tombolo PWA</title>
+                <meta name="viewport" content="initial-scale=1, width=device-width"/>
+            </Head>
+            <ProjectWrapper>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline/>
+                    <Component {...pageProps} />
+                </ThemeProvider>
+            </ProjectWrapper>
+        </CacheProvider>
+    );
 }
 
-export default MyApp
