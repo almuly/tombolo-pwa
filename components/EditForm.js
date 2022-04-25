@@ -62,7 +62,7 @@ export default function EditForm({id, projectName, handleClose}) {
                             fullWidth
                             defaultValue={projectName}
                             sx={{
-                                marginRight: 12,
+                                marginRight: 1.5,
                                 backgroundColor: theme.palette.background.secondary,
                                 fontSize: 14
                             }}
@@ -70,7 +70,8 @@ export default function EditForm({id, projectName, handleClose}) {
                             onChange={event => setQuery(event.target?.value)}
                         />
                         <Button
-                            variant={'text'}
+                            variant={'outlined'}
+                            className={styles.sendButton}
                             startIcon={<AddIcon/>}
                             onClick={() => onClick({id: id, name: query}, 'PUT')}>
                             Send
