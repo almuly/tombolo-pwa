@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 
 import {Alert, Button, Grid, IconButton, Snackbar, TextField, Typography} from "@mui/material";
-import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-import FlipIcon from '@mui/icons-material/Flip';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import AddIcon from '@mui/icons-material/Add';
 import {useProjectContext} from "../lib/context/projectContext";
 
 import styles from '../styles/editForm.module.sass'
 import Box from "@mui/material/Box";
 import theme from "../src/theme";
+import ScanIcon from "../assets/icons/ScanIcon";
+import DeleteIcon from "../assets/icons/DeleteIcon";
+import FolderIcon from "../assets/icons/FolderIcon";
 
 export default function EditForm({id, projectName, handleClose}) {
 
@@ -53,44 +53,44 @@ export default function EditForm({id, projectName, handleClose}) {
             <Grid className={styles.wrapper}>
 
                 <Grid className={styles.rowWrapper}>
-                    <IconButton onClick={() => setOpen(true)}>
-                        <FlipIcon/>
+                    <IconButton onClick={() => setOpen(!open)}>
+                        <ScanIcon className={styles.icon + ' ' + styles.rotate}/>
+                        {!open && <Typography>Rename</Typography>}
                     </IconButton>
-                    {open ?
-                        <Box className={styles.rowWrapper}>
-                            <TextField
-                                fullWidth
-                                defaultValue={projectName}
-                                sx={{
-                                    marginRight: 12,
-                                    backgroundColor: theme.palette.background.secondary,
-                                    fontSize: 14
-                                }}
-                                label={'New Project Name'}
-                                onChange={event => setQuery(event.target?.value)}
-                            />
-                            <Button
-                                variant={'text'}
-                                startIcon={<AddIcon/>}
-                                onClick={() => onClick({id: id, name: query}, 'PUT')}>
-                                Send
-                            </Button>
-                        </Box> :
-                        <Typography>Rename</Typography>}
+                    {open && <Box className={styles.rowWrapper}>
+                        <TextField
+                            fullWidth
+                            defaultValue={projectName}
+                            sx={{
+                                marginRight: 12,
+                                backgroundColor: theme.palette.background.secondary,
+                                fontSize: 14
+                            }}
+                            label={'New Project Name'}
+                            onChange={event => setQuery(event.target?.value)}
+                        />
+                        <Button
+                            variant={'text'}
+                            startIcon={<AddIcon/>}
+                            onClick={() => onClick({id: id, name: query}, 'PUT')}>
+                            Send
+                        </Button>
+                    </Box>}
+
                 </Grid>
                 <Grid className={styles.rowWrapper}>
                     <IconButton onClick={() => onClick({id: id, archived: true}, 'PUT')}>
-                        <FolderOpenIcon/>
+                        <FolderIcon className={styles.icon}/>
+                        <Typography>Move to Done/Archive</Typography>
                     </IconButton>
-                    <Typography>Move to Done/Archive</Typography>
                 </Grid>
                 <Grid className={styles.rowWrapper}>
                     <IconButton
-                        color='error'
                         onClick={() => onClick({id: id}, 'DELETE')}>
-                        <DeleteOutlineIcon/>
+                        <DeleteIcon className={styles.deleteIcon}/>
+                        <Typography>Delete</Typography>
+
                     </IconButton>
-                    <Typography color='error'>Delete</Typography>
                 </Grid>
             </Grid>
         </Grid>

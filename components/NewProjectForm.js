@@ -3,11 +3,11 @@ import {Alert, Button, Grid, IconButton, Snackbar, TextField, Typography} from "
 
 import theme from "../src/theme";
 import FulfilledButton from "./FulfilledButton";
-import {CalendarMonthOutlined} from "@mui/icons-material";
 import {useState} from "react";
 import {useProjectContext} from "../lib/context/projectContext";
 
 import style from "../styles/newProjectForm.module.sass"
+import CalendarIcon from "../assets/icons/CalendarIcon";
 
 export default function NewProjectForm({handleClose}) {
     const {setData} = useProjectContext()
@@ -49,7 +49,7 @@ export default function NewProjectForm({handleClose}) {
             <Grid className={style.containerWrapper}>
                 <Grid className={style.containerFormWrapper}>
                     <IconButton>
-                        <CalendarMonthOutlined sx={{color: theme.palette.text.main}}/>
+                        <CalendarIcon className={style.icon} />
                     </IconButton>
                     <Typography
                         variant="title2"
