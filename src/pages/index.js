@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {Grid, Container, Typography} from "@mui/material";
+import {Grid, Container, Typography,} from "@mui/material";
 import BottomNavbar from "../components/BottomNavbar";
 import TopBar from "../components/TopBar";
 import BasicTabs, {TabPanel} from "../components/TabPanel";
@@ -9,7 +9,7 @@ import {ModalPopup} from "../components/ModalPopup";
 import NewProjectForm from "../components/NewProjectForm";
 
 import Projects from "./_projects";
-import useModal from "../hooks/useModal";
+import useModal from "../lib/hooks/useModal";
 import {useProjectContext} from "../lib/context/projectContext";
 
 import style from "../styles/main.module.sass"

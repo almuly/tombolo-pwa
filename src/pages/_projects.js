@@ -3,7 +3,7 @@ import React from "react";
 import ProjectCard from "../components/ProjectCard";
 
 import Typography from "@mui/material/Typography";
-import {Grid} from "@mui/material";
+import {Alert, Grid, Snackbar} from "@mui/material";
 
 import {useProjectContext} from "../lib/context/projectContext";
 
@@ -11,11 +11,30 @@ import style from "../styles/projects.module.sass"
 
 function Projects({data}) {
 
-    const {isLoading} = useProjectContext()
+    const {
+        isLoading,
+        isSuccess,
+        setIsSuccess,
+        message
+    } = useProjectContext()
+
+    const handleCloseBar = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setIsSuccess(false);
+    }
 
     if (isLoading) return <p className={style.text}>Loading...</p>
     return (
         <>
+            <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center'}} open={isSuccess} onClose={handleCloseBar}
+                      autoHideDuration={2000}>
+                <Alert onClose={() => handleCloseBar} sx={{width: '100%'}}>
+                    {message}
+                </Alert>
+            </Snackbar>
             <Grid className={style.containerWrapper}>
                 <Typography className={style.text}>
                     Name

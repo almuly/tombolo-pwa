@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Button} from "@mui/material";
-import theme from "../src/theme";
 
 import style from "../styles/fulfilledButton.module.sass"
 

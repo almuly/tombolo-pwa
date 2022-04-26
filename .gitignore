@@ -32,9 +32,9 @@ yarn-error.log*
 .vercel
 
 #PWA Files
-**/public/workbox-*.js
-**/public/workbox-*.js.map
-**/public/sw.js
-**/public/worker-*.js
-**/public/worker-*.js.map
-**/public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
+public/sw.js
+public/worker-*.js
+public/worker-*.js.map
+public/sw.js.map

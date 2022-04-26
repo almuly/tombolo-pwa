@@ -1,4 +1,4 @@
-import {data} from "../../datbase/data";
+import {data} from "../../../datbase/data";
 
 
 export default function handler(req, res) {

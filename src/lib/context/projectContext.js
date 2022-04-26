@@ -12,6 +12,26 @@ export function ProjectWrapper({children}) {
     })
 
     const [isLoading, setLoading] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(false)
+    const [message, setMessage] = useState(null)
+
+    const onClickUpdate = useMemo(() => async (formData, method) => {
+        let baseUrl = '/api/project-data'
+        let options = {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        }
+        const response = await fetch(baseUrl, options)
+        const result = await response.json()
+        setData(result.data)
+        if (response.status === 201) {
+            setIsSuccess(true)
+            setMessage(result.message)
+        }
+    }, [])
 
     useEffect(() => {
         setLoading(true)
@@ -41,7 +61,12 @@ export function ProjectWrapper({children}) {
         data,
         filteredData,
         isLoading,
-        setData
+        setData,
+        isSuccess,
+        setIsSuccess,
+        message,
+        onClickUpdate,
+        setMessage
     };
 
     return (

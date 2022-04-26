@@ -3,7 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import {Grid, Paper} from "@mui/material";
-import theme from "../src/theme";
+
 import {useProjectContext} from "../lib/context/projectContext";
 
 import style from "../styles/tabs.module.sass"
@@ -12,7 +12,8 @@ export function TabPanel(props) {
     const {children, value, index, ...other} = props;
 
     return (
-        <Grid sx={{width: "100%"}}
+        <Grid
+            sx={{width: "100%"}}
               role="tabpanel"
               hidden={value !== index}
               id={`simple-tabpanel-${index}`}
@@ -39,7 +40,7 @@ export default function BasicTabs({value, setValue}) {
     };
 
     return (
-        <Paper sx={{width: '100%', paddingTop: theme.spacing(3)}}>
+        <Paper sx={{width: '100%'}}>
             <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
                 <Tabs variant="fullWidth" value={value} onChange={handleChange}>
                     <Tab className={style.button} label={`All ${data?.length}`}/>

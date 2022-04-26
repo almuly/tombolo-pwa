@@ -11,6 +11,8 @@ import FolderIcon from "../assets/icons/FolderIcon";
 import NotificationsIcon from "../assets/icons/NotificationsIcon";
 import UserIcon from "../assets/icons/UserIcon";
 
+import clsx from 'clsx';
+
 
 export default function BottomNavbar() {
     const [value, setValue] = useState(0);
@@ -27,11 +29,11 @@ export default function BottomNavbar() {
                 }}
             >
 
-                <BottomNavigationAction icon={<HomeIcon className={value === 0 && styles.activeIcon}/>}/>
-                <BottomNavigationAction icon={<FolderIcon className={value === 1 && styles.activeIcon}/>}/>
-                <BottomNavigationAction icon={<WalletIcon className={value === 2 && styles.activeIcon}/>}/>
-                <BottomNavigationAction icon={<NotificationsIcon className={value === 3 && styles.activeIcon}/>}/>
-                <BottomNavigationAction icon={<UserIcon className={value === 4 && styles.activeIcon}/>}/>
+                <BottomNavigationAction icon={<HomeIcon className={clsx(value === 0 && styles.activeIcon)}/>}/>
+                <BottomNavigationAction icon={<FolderIcon className={clsx(value === 1 && styles.activeIcon)}/>}/>
+                <BottomNavigationAction icon={<WalletIcon className={clsx(value === 2 && styles.activeIcon)}/>}/>
+                <BottomNavigationAction icon={<NotificationsIcon className={clsx(value === 3 && styles.activeIcon)}/>}/>
+                <BottomNavigationAction icon={<UserIcon className={clsx(value === 4 && styles.activeIcon)}/>}/>
             </BottomNavigation>
         </Container>
     );

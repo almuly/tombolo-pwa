@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import theme from '../src/theme';
-import createEmotionCache from '../src/createEmotionCache';
+import theme from '../theme';
+import createEmotionCache from '../createEmotionCache';
 
 export default class MyDocument extends Document {
 
@@ -10,9 +10,8 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <title>Tombolo PWA</title>
-                    <link rel="manifest" href="/manifest.json"/>
-                    <link rel="apple-touch-icon" href="/icon-384x384.png"/>
+                    <link rel="manifest" href="../../public/manifest.json"/>
+                    <link rel="apple-touch-icon" href="/public/icon-384x384.png"/>
                     <meta name="theme-color"
                           content={theme.palette.primary.main}/>
                     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
