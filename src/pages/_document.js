@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <link rel="manifest" href="../../public/manifest.json"/>
+                    <link rel="manifest" href="/manifest.json"/>
                     <link rel="apple-touch-icon" href="/public/icon-384x384.png"/>
                     <meta name="theme-color"
                           content={theme.palette.primary.main}/>
